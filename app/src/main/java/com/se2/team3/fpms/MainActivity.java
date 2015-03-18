@@ -1,5 +1,7 @@
 package com.se2.team3.fpms;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -8,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -18,13 +23,28 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+        (Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_LONG)).show();
+
+//        Temporarily removed to work without fragments, will be restored in the short future
+//
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.container, new PlaceholderFragment())
+//                    .commit();
+//        }
+
+        Button loadFlight = (Button) findViewById(R.id.loadFlight);
+        loadFlight.setOnClickListener(loadFlightListener);
+//        loadFlight.setText("another");
     }
 
+    private OnClickListener loadFlightListener = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
+            toast.show();
+        };
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
