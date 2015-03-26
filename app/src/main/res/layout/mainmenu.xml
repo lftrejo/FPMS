@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="84dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Welcome to the flight plan managment system"
+        android:id="@+id/textView9"
+        android:layout_gravity="center_horizontal"
+        android:height="20dp"
+        android:textSize="30dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="202dp"
+            android:layout_height="200dp"
+            android:text="Flight plan options"
+            android:id="@+id/button5"
+            android:layout_gravity="left|bottom" />
+
+        <Button
+            android:layout_width="169dp"
+            android:layout_height="199dp"
+            android:text="start flight plan"
+            android:id="@+id/button6"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <Button
+            android:layout_width="202dp"
+            android:layout_height="201dp"
+            android:text="create a flight plan"
+            android:id="@+id/button7"
+            android:layout_gravity="right|bottom" />
+
+        <MediaController
+            android:layout_width="match_parent"
+            android:layout_height="513dp"
+            android:id="@+id/mediaController"
+            android:layout_gravity="left|top" />
+    </FrameLayout>
+
+</LinearLayout>
