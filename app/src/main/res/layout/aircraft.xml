@@ -238,7 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Gray"
+                android:text="Blue"
                 android:id="@+id/textView78"
                 android:layout_column="4"
                 android:textStyle="italic"
