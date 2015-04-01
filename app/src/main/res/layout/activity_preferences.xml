@@ -26,8 +26,8 @@
         android:textAlignment="textEnd"
         android:layout_below="@+id/checkBox"
         android:layout_centerHorizontal="true"
-        android:editable="false"
-        android:enabled="false" />
+        android:editable="true"
+        android:enabled="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,8 +61,9 @@
         android:layout_below="@+id/checkBox3"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="39dp"
-        android:choiceMode="multipleChoice"
-        android:entries="@array/airports"/>
+        android:choiceMode="multipleChoiceModal"
+        android:entries="@array/airports"
+        android:clickable="true" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -2,6 +2,7 @@ package com.se2.team3.fpms;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -34,17 +35,33 @@ public class MainActivity extends ActionBarActivity {
 //        }
 
         Button loadFlight = (Button) findViewById(R.id.loadFlight);
-        loadFlight.setOnClickListener(loadFlightListener);
+        loadFlight.setOnClickListener(switchToGlass);
 //        loadFlight.setText("another");
+        Button settings = (Button) findViewById(R.id.settings);
+        settings.setOnClickListener(switchToPreferences);
     }
 
-    private OnClickListener loadFlightListener = new OnClickListener(){
+    private OnClickListener switchToGlass = new OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
-            Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
-            toast.show();
+            //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
+            //toast.show();
+            Intent intent = new Intent(context, Glass.class);
+            startActivity(intent);
         };
     };
+
+    private OnClickListener switchToPreferences = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
+            //toast.show();
+            Intent intent = new Intent(context, preferencesActivity.class);
+            startActivity(intent);
+        };
+    };
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,6 +85,11 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+    public void switchToSettings(View view){
+        Intent intent = new Intent(this, SettingsActivity.class);
+    }*/
 
     /**
      * A placeholder fragment containing a simple view.

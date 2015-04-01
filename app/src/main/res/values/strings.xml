@@ -16,4 +16,5 @@
         <item>Airport 5</item>
         <item>Airport 6</item>
     </string-array>
+    <string name="title_activity_glass">Glass</string>
 </resources>

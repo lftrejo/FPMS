@@ -39,7 +39,8 @@ tools:context=".MainActivity">
     android:text="@string/main_settings"
     android:id="@+id/settings"
     android:layout_alignTop="@+id/loadFlight"
-    android:layout_alignParentEnd="true" />
+    android:layout_alignParentEnd="true"
+    android:onClick="switchToSettings" />
 
 <Button
     android:layout_width="100dp"
