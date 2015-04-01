@@ -69,9 +69,7 @@ public class AircraftMotionManager
 
     // When Location provider senses a change in aircraft location
     public void onLocationChanged(Location location) {
-        while(1) {
-            Thread.sleep(5);
-            dispatch(Location loc);
+            dispatch(location);
     }
 
     // When WindProvider senses a change in wind direction or speed affecting aircraft
@@ -80,7 +78,7 @@ public class AircraftMotionManager
     }
 
     // received location change from location provider thread
-    private void dispatch(Location loc) {
+    private void dispatch(Location location) {
         // Figure out if a location change should be sent as an event
         // If you haven't moved dont send an event and other sanity checks
 
@@ -112,4 +110,4 @@ public class AircraftMotionManager
     }
 
 }
-}
+

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity
@@ -51,8 +52,8 @@ public class MainActivity extends ActionBarActivity
     }
 
     @Override
-    public void onAircraftMotionChanged(Location location, float trueAirspeed, float trueCourse) {
-        Toast.makeText(app.getBaseContext(), "Sent from AMM", Toast.LENGTH_SHORT).show();
+    public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
+        Toast.makeText(this, "Sent from AMM", Toast.LENGTH_SHORT).show();
     }
 
     /**
