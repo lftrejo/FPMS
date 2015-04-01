@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".preferencesActivity"
+            android:label="@string/title_activity_preferences" >
+        </activity>
+        <activity
+            android:name=".routeActivity"
+            android:label="@string/title_activity_route" >
+        </activity>
+        <activity
+            android:name=".startFlightActivity"
+            android:label="@string/title_activity_start_flight" >
+        </activity>
     </application>
 
 </manifest>
