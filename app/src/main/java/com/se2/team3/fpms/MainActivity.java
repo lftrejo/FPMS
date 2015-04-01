@@ -1,5 +1,6 @@
 package com.se2.team3.fpms;
 
+import android.location.Location;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,8 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity
+    implements AircraftMotionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onAircraftMotionChanged(Location location, float trueAirspeed, float trueCourse) {
+        Toast.makeText(app.getBaseContext(), "Sent from AMM", Toast.LENGTH_SHORT).show();
     }
 
     /**
