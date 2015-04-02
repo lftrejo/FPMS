@@ -36,8 +36,20 @@ public class MainActivity extends ActionBarActivity {
 //        loadFlight.setText("another");
         Button settings = (Button) findViewById(R.id.startFlight);
         settings.setOnClickListener(switchToPreferences);
+
+        Button newFlight = (Button) findViewById(R.id.newFlight);
+        newFlight.setOnClickListener(switchToNewFlight);
     }
 
+    private OnClickListener switchToNewFlight = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
+            //toast.show();
+            Intent intent = new Intent(context, createFlightPlanActivity.class);
+            startActivity(intent);
+        };
+    };
     private OnClickListener switchToGlass = new OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
