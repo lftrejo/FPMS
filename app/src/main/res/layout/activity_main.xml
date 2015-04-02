@@ -15,29 +15,19 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/imageView"
-    android:layout_alignParentStart="true"
-    android:src="@drawable/bravo_sectional"
-    android:layout_toStartOf="@+id/settings"
-    android:layout_above="@+id/loadFlight"
-    android:layout_alignEnd="@+id/settings" />
-
-<Button
+    <Button
     android:layout_width="100dp"
     android:layout_height="70dp"
     android:text="@string/load_flight"
     android:id="@+id/loadFlight"
     android:layout_alignParentBottom="true"
-    android:layout_alignParentStart="true" />
+    android:layout_centerHorizontal="true" />
 
 <Button
     android:layout_width="100dp"
     android:layout_height="70dp"
-    android:text="@string/main_settings"
-    android:id="@+id/settings"
+    android:text="@string/startFlight"
+    android:id="@+id/startFlight"
     android:layout_alignTop="@+id/loadFlight"
     android:layout_alignParentEnd="true"
     android:onClick="switchToSettings" />
@@ -47,7 +37,36 @@ tools:context=".MainActivity">
     android:layout_height="70dp"
     android:text="@string/new_flight"
     android:id="@+id/newFlight"
-    android:layout_alignBottom="@+id/loadFlight"
-    android:layout_centerHorizontal="true" />
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentStart="true" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/loadFlight"
+        android:layout_alignParentEnd="true" >
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizontalScrollView">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignBottom="@+id/scrollView"
+                android:layout_alignEnd="@+id/startFlight"
+                android:src="@drawable/bravo_sectional"
+                android:scaleType="matrix" />
+        </HorizontalScrollView>
+
+    </ScrollView>
+
+
 
 </RelativeLayout>

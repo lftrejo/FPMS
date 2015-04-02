@@ -1,10 +1,8 @@
 package com.se2.team3.fpms;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -37,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
         Button loadFlight = (Button) findViewById(R.id.loadFlight);
         loadFlight.setOnClickListener(switchToGlass);
 //        loadFlight.setText("another");
-        Button settings = (Button) findViewById(R.id.settings);
+        Button settings = (Button) findViewById(R.id.startFlight);
         settings.setOnClickListener(switchToPreferences);
     }
 
@@ -78,12 +75,32 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+//        if (id == R.id.action_settings) {
+//
+//            return true;
+//        }
 
-            return true;
+        //return super.onOptionsItemSelected(item);
+
+        Context context = getApplicationContext();
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_resources:
+                intent = new Intent(context, Glass.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_preferences:
+                intent = new Intent(context, preferencesActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_exit:
+                intent = new Intent(context, preferencesActivity.class);
+                startActivity(intent);
+                return false;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
     /*

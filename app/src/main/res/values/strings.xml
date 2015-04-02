@@ -2,8 +2,8 @@
     <string name="app_name">FPMS</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="load_flight">Load Flight</string>
-    <string name="new_flight">New Flight</string>
+    <string name="load_flight">Manage Flight</string>
+    <string name="new_flight">Create Flight</string>
     <string name="main_settings">Settings</string>
     <string name="title_activity_start_flight">Start Flight</string>
     <string name="title_activity_preferences">Set Preferences</string>
@@ -17,4 +17,5 @@
         <item>Airport 6</item>
     </string-array>
     <string name="title_activity_glass">Glass</string>
+    <string name="startFlight">Start Flight</string>
 </resources>

@@ -12,9 +12,9 @@
         android:id="@+id/imageView"
         android:layout_alignParentStart="true"
         android:src="@drawable/bravo_sectional"
-        android:layout_toStartOf="@+id/settings"
+        android:layout_toStartOf="@+id/startFlight"
         android:layout_above="@+id/loadFlight"
-        android:layout_alignEnd="@+id/settings" />
+        android:layout_alignEnd="@+id/startFlight" />
 
     <Button
         android:layout_width="100dp"
@@ -28,7 +28,7 @@
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:text="@string/main_settings"
-        android:id="@+id/settings"
+        android:id="@+id/startFlight"
         android:layout_alignTop="@+id/loadFlight"
         android:layout_alignParentEnd="true" />
 
