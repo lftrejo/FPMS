@@ -50,15 +50,12 @@ public class Glass extends ActionBarActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 while (true) {
                     try {
                         Thread.sleep(1000);
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                // TODO Auto-generated method stub
-                                // Write your code here to update the UI.
                                 t.setText(Integer.toString(new Integer(t.getText().toString())+1));
                             }
                         });
