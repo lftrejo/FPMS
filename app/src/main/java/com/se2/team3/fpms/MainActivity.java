@@ -2,6 +2,7 @@ package com.se2.team3.fpms;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         (Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_LONG)).show();
 
+        // connect aircraftMotionManager
+
+
 //        Temporarily removed to work without fragments, will be restored in the short future
 //
 //        if (savedInstanceState == null) {
@@ -33,20 +37,27 @@ public class MainActivity extends ActionBarActivity {
 //                    .commit();
 //        }
 
-        Button loadFlight = (Button) findViewById(R.id.loadFlight);
-        loadFlight.setOnClickListener(loadFlightListener);
+        ((Button) findViewById(R.id.loadFlight)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Begin Asymmetric developmental effort knowledge insinuation ;)
+                Toast.makeText(getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Warning: Slow network speed detected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Calculating download...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "4 hours", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ((Button) findViewById(R.id.newFlight)).setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), GoogleGlassActivity.class));
+                //setContentView(R.layout.activity_google_glass);
+            }
+        });
 //        loadFlight.setText("another");
     }
 
-    private OnClickListener loadFlightListener = new OnClickListener(){
-        public void onClick(View v){
-            Context context = getApplicationContext();
-            Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
-            toast.show();
-        };
-    };
-
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);

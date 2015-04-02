@@ -17,7 +17,7 @@ public class LocationProvider {
             public void run() {
                 for(int i=0; i<20; i++) {
                     try {
-                        Thread.sleep(5);
+                        Thread.sleep(5000);  // sleep for 5s
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -26,6 +26,4 @@ public class LocationProvider {
             }
         }).start();
     }
-
-
 }

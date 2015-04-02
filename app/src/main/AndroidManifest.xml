@@ -32,6 +32,10 @@
             android:name=".startFlightActivity"
             android:label="@string/title_activity_start_flight" >
         </activity>
+        <activity
+            android:name=".GoogleGlassActivity"
+            android:label="@string/title_activity_google_glass" >
+        </activity>
     </application>
 
 </manifest>

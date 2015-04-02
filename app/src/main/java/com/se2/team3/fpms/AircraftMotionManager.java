@@ -2,6 +2,7 @@ package com.se2.team3.fpms;
 
 import android.app.Activity;
 import android.location.Location;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -12,10 +13,10 @@ import java.util.ArrayList;
 public class AircraftMotionManager
     implements LocationListener, WindListener
 {
-    private static AircraftMotionManager instance;
-    private static Activity activity;
-    private static LocationProvider locProvider;
-    private static WindProvider windProvider;
+    private static AircraftMotionManager gInstance;
+    private static Activity gActivity;
+    //private static LocationProvider locProvider;
+    //private static WindProvider windProvider;
     private ArrayList<AircraftMotionListener> listeners = new ArrayList<AircraftMotionListener>();
 
     private Location location; // current location
@@ -25,6 +26,8 @@ public class AircraftMotionManager
     private float windDirection; // current heading wind is blowing from
     private float trueAirspeed;
     private float trueCourse;
+
+
 
     private AircraftMotionManager() {
         new Thread(new Runnable() {
@@ -37,17 +40,27 @@ public class AircraftMotionManager
     }
 
     // get Singleton
+    // Hacky way to get the UI thread Activity needed to execute from this thread to UI thread
+    public static synchronized AircraftMotionManager getInstance(Activity activity) {
+        if (activity != null)
+            gActivity = activity;
+        if (gInstance == null)
+            gInstance = new AircraftMotionManager();
+        return gInstance;
+    }
+    // get Singleton
     public static synchronized AircraftMotionManager getInstance() {
-        if (instance == null)
-            instance = new AircraftMotionManager();
-        return instance;
+        if (gInstance == null)
+            gInstance = new AircraftMotionManager();
+        return gInstance;
     }
 
     // Initialize location provider when this created
     // run in this thread not UI thread
     void initLocationProvider()
     {
-        //todo: create loc provider
+        // create basic test location provider
+        new LocationProvider(this);
     }
 
     // Initialize location provider when this created
@@ -72,19 +85,42 @@ public class AircraftMotionManager
             dispatch(location);
     }
 
-    // When WindProvider senses a change in wind direction or speed affecting aircraft
+    // When WindProvider senses a change in wind direction/speed
     public void onWindChanged(float windDirection, float speed) {
 
     }
 
-    // received location change from location provider thread
+    // Container to hold event state. Events run on the UI thread
+    abstract class DispatchedEvent implements Runnable {
+        protected AircraftMotionListener listener;
+        protected Location location;
+        protected float trueAirspeed;
+        protected float trueCourse;
+
+        public DispatchedEvent(AircraftMotionListener listener,
+                               Location location, float trueAirspeed, float trueCourse) {
+            this.listener = listener;
+            this.location = location;
+            this.trueAirspeed = trueAirspeed;
+            this.trueCourse = trueCourse;
+        }
+    }
+
+    // Send location change event to all listeners, received from location provider thread
     private void dispatch(Location location) {
         // Figure out if a location change should be sent as an event
         // If you haven't moved dont send an event and other sanity checks
 
         // for now just see if this event sys works
         for (AircraftMotionListener listener : listeners)
-            listener.onAircraftMotion(location, trueAirspeed(), trueCourse());
+            Log.i("AMM", "dispatch(location)");
+            //Toast.makeText(gActivity.getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT);
+            /*gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
+                public void run() {
+                    this.listener.onAircraftMotion(this.location, this.trueAirspeed, this.trueCourse);
+                }
+            });
+            */
     }
 
     // received wind change from location provider thread
@@ -94,6 +130,7 @@ public class AircraftMotionManager
         // send events if need be, don't send if nothing changed
 
         for (AircraftMotionListener listener : listeners)
+
             listener.onAircraftMotion(location, trueAirspeed(), trueCourse());
     }
 
