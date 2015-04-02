@@ -17,6 +17,8 @@ import java.util.GregorianCalendar;
 public class Glass3 extends ActionBarActivity
     implements AircraftMotionListener {
 
+    private double fuel = 255;
+
     private TextView txtHeading;
     private TextView txtAltitude;
     private TextView txtLatLng;
@@ -36,9 +38,16 @@ public class Glass3 extends ActionBarActivity
         setContentView(R.layout.activity_glass3);
 
         txtHeading = (TextView) findViewById(R.id.txtHeading);
-        txtAltitude = (TextView) findViewById(R.id.txtLong);
-        txtLatLng = (TextView) findViewById(R.id.txtBearing);
+        txtAltitude = (TextView) findViewById(R.id.txtAltitude);
+        txtLatLng = (TextView) findViewById(R.id.txtLatLng);
+        txtETA = (TextView) findViewById(R.id.txtETA);
+        txtRTA = (TextView) findViewById(R.id.txtRTA);
         AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
+        airportLoc = new Location("FnPMS");
+        airportLoc.setLatitude(airportLat);
+        airportLoc.setLongitude(airportLong);
+
+
     }
 /*
     protected void onStop() {
@@ -92,6 +101,7 @@ public class Glass3 extends ActionBarActivity
         SimpleDateFormat HHmmss = new SimpleDateFormat("HH:mm:ss");
         txtRTA.setText("RTA: " + HHmmss.format(RTA));
         txtETA.setText("ETA: " + HHmmss.format((getETA(location, airportLoc, 32)).getTime()));
+        txtAltitude.setText(Double.toString(Math.round(fuel = fuel - 0.1)));
     }
 
     // dest waypoint

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.content.Context;
 import android.os.Handler;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +25,7 @@ public class Glass extends ActionBarActivity
 
     Handler mHandler = new Handler();
     private Date RTA = null;
+    private double fuel = 255;
 
     private TextView txtHeading;
     private TextView txtAltitude;
@@ -33,6 +35,7 @@ public class Glass extends ActionBarActivity
     private Location airportLoc;
     private double airportLat = 31.833;
     private double airportLong = -106.38;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +48,13 @@ public class Glass extends ActionBarActivity
         buttonLeft.setOnClickListener(goRight);
 
         txtHeading = (TextView) findViewById(R.id.txtHeading);
-        txtAltitude = (TextView) findViewById(R.id.txtLong);
-        txtLatLng = (TextView) findViewById(R.id.txtBearing);
+        txtAltitude = (TextView) findViewById(R.id.txtAltitude);
+        txtLatLng = (TextView) findViewById(R.id.textView9);
 
         AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
+        airportLoc = new Location("FnPMS");
+        airportLoc.setLatitude(airportLat);
+        airportLoc.setLongitude(airportLong);
 
         speedLoop();
 
@@ -146,6 +152,6 @@ public class Glass extends ActionBarActivity
                 Double.toString(location.getLongitude());
         txtLatLng.setText(latLng);
         txtHeading.setText(Float.toString(location.bearingTo(airportLoc)));
-        txtAltitude.setText("1");
+        txtAltitude.setText(Long.toString(Math.round(fuel = fuel - 0.1)));
     }
 }

@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Flight-01"
-                android:id="@+id/textView5"
+                android:id="@+id/txtLatLng"
                 android:layout_column="2"
                 android:textSize="14dp"
                 android:textStyle="italic" />
