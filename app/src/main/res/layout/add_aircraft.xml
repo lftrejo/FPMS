@@ -1,0 +1,171 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Add"
+        android:id="@+id/addTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="-10dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textName"
+        android:layout_marginTop="0dp"
+        android:hint="Name"
+        android:textSize="14dp"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAircraftID"
+        android:layout_marginTop="0dp"
+        android:hint="Aircraft ID"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number|textCapCharacters" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAircraftModel"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:hint="Aircraft Model"
+        android:textSize="14dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAircraftColor"
+        android:layout_marginTop="0dp"
+        android:hint="Aircraft Color"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="text" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMinimumSpeed"
+        android:layout_marginTop="0dp"
+        android:hint="Minimum Cruising Speed"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textNormalSpeed"
+        android:layout_marginTop="0dp"
+        android:hint="Normal Cruising Speed"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMaximumSpeed"
+        android:layout_marginTop="0dp"
+        android:hint="Maximum Cruising Speed"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMinimumAltitude"
+        android:layout_marginTop="0dp"
+        android:hint="Minimum Cruising Altitude"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textNormalAltitude"
+        android:layout_marginTop="0dp"
+        android:hint="Normal Cruising Altitude"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMaximumAltitude"
+        android:layout_marginTop="0dp"
+        android:hint="Maximum Cruising Altitude"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textFuelConsumption"
+        android:hint="Fuel Consumption"
+        android:layout_marginTop="0dp"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textFuelConsumptionRate"
+        android:layout_marginTop="0dp"
+        android:hint="Fuel Consumption Rate"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:id="@+id/button8"
+            android:background="#ff585858"
+            android:textColor="#ffcbcbcb" />
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/button16"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858" />
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/button17"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858" />
+    </LinearLayout>
+
+</LinearLayout>
