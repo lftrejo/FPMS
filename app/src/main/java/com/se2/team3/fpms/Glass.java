@@ -45,7 +45,7 @@ public class Glass extends ActionBarActivity {
 
 
     public void speedLoop(){
-        final TextView t = (TextView) findViewById(R.id.speedVIew);
+        final TextView t = (TextView) findViewById(R.id.textView4);
         t.setText("0");
         new Thread(new Runnable() {
             @Override
