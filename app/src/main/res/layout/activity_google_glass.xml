@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Longitude:"
-        android:id="@+id/textView6"
+        android:id="@+id/txtAltitude"
         android:layout_alignBottom="@+id/txtLong"
         android:layout_toStartOf="@+id/txtLong" />
 
@@ -73,14 +73,14 @@
         android:id="@+id/txtBearing"
         android:layout_marginTop="28dp"
         android:layout_below="@+id/txtLong"
-        android:layout_toEndOf="@+id/textView6" />
+        android:layout_toEndOf="@+id/txtAltitude" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Bearing"
-        android:id="@+id/textView7"
+        android:id="@+id/txtHeading"
         android:layout_alignBottom="@+id/txtBearing"
         android:layout_toStartOf="@+id/txtBearing" />
 

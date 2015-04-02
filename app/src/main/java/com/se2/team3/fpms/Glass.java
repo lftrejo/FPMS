@@ -1,8 +1,10 @@
 package com.se2.team3.fpms;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,9 +13,26 @@ import android.widget.TextView;
 import android.content.Context;
 import android.os.Handler;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class Glass extends ActionBarActivity {
+
+public class Glass extends ActionBarActivity
+    implements AircraftMotionListener {
+
     Handler mHandler = new Handler();
+    private Date RTA = null;
+
+    private TextView txtHeading;
+    private TextView txtAltitude;
+    private TextView txtLatLng;
+
+    // test location to head towards
+    private Location airportLoc;
+    private double airportLat = 31.833;
+    private double airportLong = -106.38;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +44,21 @@ public class Glass extends ActionBarActivity {
         Button buttonRight = (Button) findViewById(R.id.buttonleft);
         buttonLeft.setOnClickListener(goRight);
 
+        txtHeading = (TextView) findViewById(R.id.txtHeading);
+        txtAltitude = (TextView) findViewById(R.id.txtLong);
+        txtLatLng = (TextView) findViewById(R.id.txtBearing);
+
+        AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
+
         speedLoop();
+
+
     }
+/*
+    protected void onStop() {
+        AircraftMotionManager.getInstance(this).removeAircraftMotionUpdates(this);
+    }
+    */
 
     private View.OnClickListener goLeft = new View.OnClickListener(){
         public void onClick(View v){
@@ -104,4 +136,16 @@ public class Glass extends ActionBarActivity {
     }, delay, period);
 
      */
+
+    public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
+        //Toast.makeText(this.getBaseContext(), "onAircraftMotion event", Toast.LENGTH_SHORT).show();
+
+        Log.i("GG", "onAircraftMotion(loc, spd, course)");
+        //if (checkBox.isChecked())
+        String latLng = Double.toString(location.getLatitude()) + " " +
+                Double.toString(location.getLongitude());
+        txtLatLng.setText(latLng);
+        txtHeading.setText(Float.toString(location.bearingTo(airportLoc)));
+        txtAltitude.setText("1");
+    }
 }
