@@ -44,10 +44,6 @@
             android:name=".Glass3"
             android:label="@string/title_activity_glass3" >
         </activity>
-        <activity
-            android:name=".createFlightPlanActivity"
-            android:label="@string/title_activity_create_flight_plan" >
-        </activity>
     </application>
 
 </manifest>

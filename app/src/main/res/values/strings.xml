@@ -20,21 +20,4 @@
     <string name="startFlight">Start Flight</string>
     <string name="title_activity_glass2">Glass2</string>
     <string name="title_activity_glass3">Glass3</string>
-    <string name="title_activity_create_flight_plan">createFlightPlanActivity</string>
-    <string-array name="aircraftsIDs">
-        <item>444</item>
-        <item>555</item>
-        <item>777</item>
-        <item>345</item>
-        <item>455</item>
-        <item>345</item>
-        <item>766</item>
-    </string-array>
-    <string-array name="departurePoints">
-        <item>El Paso</item>
-        <item>Dallas</item>
-        <item>San Antonio</item>
-        <item>Las Vegas</item>
-        <item>Newark</item>
-    </string-array>
 </resources>
