@@ -1,7 +1,9 @@
 package com.se2.team3.fpms;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         (Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_LONG)).show();
 
 //        Temporarily removed to work without fragments, will be restored in the short future
@@ -78,20 +81,15 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        Context context = getApplicationContext();
-        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_resources:
-                intent = new Intent(context, manageResources.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), manageResources.class));
                 return true;
             case R.id.action_preferences:
-                intent = new Intent(context, preferencesActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), preferencesActivity.class));
                 return true;
             case R.id.action_exit:
-                intent = new Intent(context, preferencesActivity.class);
-                startActivity(intent);
+                new AlertDialog.Builder(this).setTitle("FPMS").setMessage("\n  Created By Team 3\n  Software Engineering II").show();
                 return false;
             default:
                 return super.onOptionsItemSelected(item);

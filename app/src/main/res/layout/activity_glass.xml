@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.se2.team3.fpms.Glass"
-    android:background="#ff000000">
+    android:background="#ff000000" android:screenOrientation="landscape">
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,4 +98,17 @@
         android:layout_above="@+id/txtAltitude"
         android:layout_alignEnd="@+id/txtAltitude" />
 
+        android:layout_above="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Card 1"
+        android:id="@+id/textView84"
+        android:textColor="#ffffffff"
+        android:textSize="70dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

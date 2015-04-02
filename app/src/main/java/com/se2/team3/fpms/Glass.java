@@ -1,10 +1,10 @@
 package com.se2.team3.fpms;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.location.Location;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,11 +41,12 @@ public class Glass extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glass);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         Button buttonLeft = (Button) findViewById(R.id.buttonleft);
         buttonLeft.setOnClickListener(goLeft);
-        Button buttonRight = (Button) findViewById(R.id.buttonleft);
-        buttonLeft.setOnClickListener(goRight);
+        Button buttonRight = (Button) findViewById(R.id.buttonright);
+        buttonRight.setOnClickListener(goRight);
 
         txtHeading = (TextView) findViewById(R.id.txtHeading);
         txtAltitude = (TextView) findViewById(R.id.txtAltitude);
@@ -85,7 +86,7 @@ public class Glass extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_glass, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -94,14 +95,19 @@ public class Glass extends ActionBarActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_resources:
+                startActivity(new Intent(getApplicationContext(), manageResources.class));
+                return true;
+            case R.id.action_preferences:
+                startActivity(new Intent(getApplicationContext(), preferencesActivity.class));
+                return true;
+            case R.id.action_exit:
+                new AlertDialog.Builder(this).setTitle("FPMS").setMessage("\n  Created By Team 3\n  Software Engineering II").show();
+                return false;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
 
