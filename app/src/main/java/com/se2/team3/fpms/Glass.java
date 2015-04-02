@@ -22,8 +22,8 @@ public class Glass extends ActionBarActivity {
 
         Button buttonLeft = (Button) findViewById(R.id.buttonleft);
         buttonLeft.setOnClickListener(goLeft);
-        Button buttonRight = (Button) findViewById(R.id.buttonleft);
-        buttonLeft.setOnClickListener(goRight);
+        Button buttonRight = (Button) findViewById(R.id.buttonright);
+        buttonRight.setOnClickListener(goRight);
 
         speedLoop();
     }

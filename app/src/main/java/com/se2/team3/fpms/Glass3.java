@@ -1,9 +1,13 @@
 package com.se2.team3.fpms;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class Glass3 extends ActionBarActivity {
@@ -12,7 +16,29 @@ public class Glass3 extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glass3);
+
+        Button buttonLeft = (Button) findViewById(R.id.buttonleft3);
+        buttonLeft.setOnClickListener(goLeft);
+        Button buttonRight = (Button) findViewById(R.id.buttonright3);
+        buttonRight.setOnClickListener(goRight);
+
     }
+
+    private View.OnClickListener goLeft = new View.OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass2.class);
+            startActivity(intent);
+        };
+    };
+
+    private View.OnClickListener goRight = new View.OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass.class);
+            startActivity(intent);
+        };
+    };
 
 
     @Override
