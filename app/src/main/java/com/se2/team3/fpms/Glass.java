@@ -69,4 +69,19 @@ public class Glass extends ActionBarActivity {
             }
         }).start();
     }
+
+
+    /*   Test code
+    int delay = 1000; // delay for 1 sec.
+    int period = 10000; // repeat every 10 sec.
+    Timer timer = new Timer();
+    timer.scheduleAtFixedRate(new TimerTask()
+    {
+        public void run()
+        {
+            displayData();  // display the data
+        }
+    }, delay, period);
+
+     */
 }
