@@ -3,6 +3,7 @@ package com.se2.team3.fpms;
 import android.location.Location;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -20,8 +21,6 @@ public class GoogleGlassActivity extends ActionBarActivity
         // Enable AircraftMotionEvents
         AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
         Toast.makeText(this.getBaseContext(), "Created GG onCreate", Toast.LENGTH_SHORT).show();
-        CheckBox checkBox = (CheckBox) findViewById(R.id.cbxReceive);
-        checkBox.setChecked(true);
     }
 /*
     protected void onResume() {
@@ -55,7 +54,8 @@ public class GoogleGlassActivity extends ActionBarActivity
     public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
         Toast.makeText(this.getBaseContext(), "onAircraftMotion event", Toast.LENGTH_SHORT).show();
         CheckBox checkBox = (CheckBox) findViewById(R.id.cbxReceive);
-        if (checkBox.isChecked())
-            checkBox.setChecked(false);
+        Log.i("GG", "onAircraftMotion(loc, spd, course)");
+        //if (checkBox.isChecked())
+            checkBox.setChecked(true);
     }
 }

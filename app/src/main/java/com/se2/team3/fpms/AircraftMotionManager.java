@@ -112,15 +112,15 @@ public class AircraftMotionManager
         // If you haven't moved dont send an event and other sanity checks
 
         // for now just see if this event sys works
-        for (AircraftMotionListener listener : listeners)
-            Log.i("AMM", "dispatch(location)");
+        for (AircraftMotionListener listener : listeners) {
+            Log.i("AMM", "dispatch(location) listener:" + listener.toString());
             //Toast.makeText(gActivity.getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT);
-            /*gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
+            gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
                 public void run() {
                     this.listener.onAircraftMotion(this.location, this.trueAirspeed, this.trueCourse);
                 }
             });
-            */
+        }
     }
 
     // received wind change from location provider thread
