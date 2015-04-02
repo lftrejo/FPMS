@@ -1,5 +1,6 @@
 package com.se2.team3.fpms;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -60,6 +61,7 @@ public class aircraftActivity extends ActionBarActivity {
                 startActivity(new Intent(getApplicationContext(), preferencesActivity.class));
                 return true;
             case R.id.action_exit:
+                new AlertDialog.Builder(this).setTitle("FPMS").setMessage("\n  Created By Team 3\n  Software Engineering II").show();
                 return false;
             default:
                 return super.onOptionsItemSelected(item);
