@@ -20,4 +20,5 @@
     <string name="startFlight">Start Flight</string>
     <string name="title_activity_glass2">Glass2</string>
     <string name="title_activity_glass3">Glass3</string>
+    <string name="title_activity_custom_routes">CustomRoutes</string>
 </resources>

@@ -44,6 +44,10 @@
             android:name=".Glass3"
             android:label="@string/title_activity_glass3" >
         </activity>
+        <activity
+            android:name=".CustomRoutes"
+            android:label="@string/title_activity_custom_routes" >
+        </activity>
     </application>
 
 </manifest>
