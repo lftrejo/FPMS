@@ -265,7 +265,7 @@
             android:layout_width="76dp"
             android:layout_height="wrap_content"
             android:text="Add"
-            android:id="@+id/button19"
+            android:id="@+id/aircraftAddButton"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858" />
 
@@ -281,7 +281,7 @@
             android:layout_width="76dp"
             android:layout_height="wrap_content"
             android:text="Edit"
-            android:id="@+id/button21"
+            android:id="@+id/aircraftEditButton"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858" />
 
