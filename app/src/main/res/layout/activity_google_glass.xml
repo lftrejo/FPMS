@@ -19,4 +19,107 @@
         android:layout_alignParentStart="true"
         android:checked="false" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtLat"
+        android:layout_below="@+id/cbxReceive"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtLong"
+        android:layout_below="@+id/txtLat"
+        android:layout_alignStart="@+id/txtLat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Latitude:"
+        android:id="@+id/textView5"
+        android:singleLine="true"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_toEndOf="@+id/cbxReceive" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Longitude:"
+        android:id="@+id/textView6"
+        android:layout_alignBottom="@+id/txtLong"
+        android:layout_toStartOf="@+id/txtLong" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_alignTop="@+id/txtLat"
+        android:layout_toEndOf="@+id/textView5" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtBearing"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/txtLong"
+        android:layout_toEndOf="@+id/textView6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Bearing"
+        android:id="@+id/textView7"
+        android:layout_alignBottom="@+id/txtBearing"
+        android:layout_toStartOf="@+id/txtBearing" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtRTA"
+        android:layout_below="@+id/txtBearing"
+        android:layout_alignEnd="@+id/editText2"
+        android:layout_marginTop="33dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtETA"
+        android:layout_below="@+id/txtRTA"
+        android:layout_alignEnd="@+id/txtRTA"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="RTA"
+        android:id="@+id/RTA"
+        android:layout_above="@+id/txtETA"
+        android:layout_toStartOf="@+id/txtRTA" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ETA"
+        android:id="@+id/ETA"
+        android:layout_alignBottom="@+id/txtETA"
+        android:layout_toStartOf="@+id/txtETA" />
+
 </RelativeLayout>

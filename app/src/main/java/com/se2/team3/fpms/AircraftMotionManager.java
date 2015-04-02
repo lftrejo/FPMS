@@ -60,7 +60,8 @@ public class AircraftMotionManager
     void initLocationProvider()
     {
         // create basic test location provider
-        new LocationProvider(this);
+        //new LocationProvider(this);
+        new LocationProvider.FixedPath(this);
     }
 
     // Initialize location provider when this created
@@ -129,9 +130,15 @@ public class AircraftMotionManager
         // sanity check the result
         // send events if need be, don't send if nothing changed
 
-        for (AircraftMotionListener listener : listeners)
-
-            listener.onAircraftMotion(location, trueAirspeed(), trueCourse());
+        for (AircraftMotionListener listener : listeners) {
+            Log.i("AMM", "dispatch(windSpeed, windDirection) listener:" + listener.toString());
+            //Toast.makeText(gActivity.getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT);
+            gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
+                public void run() {
+                    this.listener.onAircraftMotion(this.location, this.trueAirspeed, this.trueCourse);
+                }
+            });
+        }
     }
 
     // Aircraft speed through the airmass not ground speed
@@ -141,7 +148,7 @@ public class AircraftMotionManager
         return groundSpeed;
     }
 
-    // Heading of aircraft
+    // Heading of aircraft motion along ground
     private float trueCourse() {
         return heading;
     }

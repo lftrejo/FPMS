@@ -7,11 +7,31 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class GoogleGlassActivity extends ActionBarActivity
     implements AircraftMotionListener {
+
+    private CheckBox checkBox;
+    private TextView txtLat;
+    private TextView txtLong;
+    private TextView txtBearing;
+    private TextView txtRTA;
+    private TextView txtETA;
+
+    // test location to head towards
+    private Location airportLoc;
+    private double airportLat = 31.833;
+    private double airportLong = -106.38;
+
+    private Date RTA = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +41,18 @@ public class GoogleGlassActivity extends ActionBarActivity
         // Enable AircraftMotionEvents
         AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
         Toast.makeText(this.getBaseContext(), "Created GG onCreate", Toast.LENGTH_SHORT).show();
+
+        checkBox = (CheckBox) findViewById(R.id.cbxReceive);
+        txtLat = (TextView) findViewById(R.id.txtLat);
+        txtLong = (TextView) findViewById(R.id.txtLong);
+        txtBearing = (TextView) findViewById(R.id.txtBearing);
+        txtRTA = (TextView) findViewById(R.id.txtRTA);
+        txtETA = (TextView) findViewById(R.id.txtETA);
+
+        // init test destination for rta and eta
+        airportLoc = new Location("FnPMS");
+        airportLoc.setLatitude(airportLat);
+        airportLoc.setLongitude(airportLong);
     }
 /*
     protected void onResume() {
@@ -47,15 +79,40 @@ public class GoogleGlassActivity extends ActionBarActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
-        Toast.makeText(this.getBaseContext(), "onAircraftMotion event", Toast.LENGTH_SHORT).show();
-        CheckBox checkBox = (CheckBox) findViewById(R.id.cbxReceive);
+        //Toast.makeText(this.getBaseContext(), "onAircraftMotion event", Toast.LENGTH_SHORT).show();
+
         Log.i("GG", "onAircraftMotion(loc, spd, course)");
         //if (checkBox.isChecked())
-            checkBox.setChecked(true);
+        checkBox.setChecked(true);
+        txtLat.setText(Double.toString(location.getLatitude()));
+        txtLong.setText(Double.toString(location.getLongitude()));
+
+        txtBearing.setText(Float.toString(location.bearingTo(airportLoc)));
+
+        if (RTA == null) {
+            Calendar c = getETA(location, airportLoc, 32);
+            Calendar now = Calendar.getInstance();
+            now.add(Calendar.HOUR, c.get(Calendar.HOUR));
+            now.add(Calendar.MINUTE, c.get(Calendar.MINUTE));
+            now.add(Calendar.SECOND, c.get(Calendar.SECOND));
+            RTA = now.getTime();
+        }
+
+        SimpleDateFormat HHmmss = new SimpleDateFormat("HH:mm:ss");
+        txtRTA.setText(HHmmss.format(RTA));
+        txtETA.setText(HHmmss.format((getETA(location, airportLoc, 32)).getTime()));
     }
+
+    // dest waypoint
+    // speed of aircraft
+    public Calendar getETA(Location current, Location dest, float speedMps) {
+        float m = current.distanceTo(dest);
+        int seconds = Math.round(m / speedMps);
+        return new GregorianCalendar(0,0,0,0,0,seconds);
+    }
+
 }
