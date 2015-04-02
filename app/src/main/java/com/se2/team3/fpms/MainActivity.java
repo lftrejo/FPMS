@@ -32,28 +32,33 @@ public class MainActivity extends ActionBarActivity {
 //        }
 
         Button loadFlight = (Button) findViewById(R.id.loadFlight);
-        loadFlight.setOnClickListener(switchToGlass);
-//        loadFlight.setText("another");
-        Button settings = (Button) findViewById(R.id.startFlight);
-        settings.setOnClickListener(switchToPreferences);
+        loadFlight.setOnClickListener(manageFlight);
+        Button startFlightButton = (Button) findViewById(R.id.startFlight);
+        startFlightButton.setOnClickListener(startFlight);
+        Button newFlightButton = (Button) findViewById(R.id.newFlight);
+        newFlightButton.setOnClickListener(createFlight);
     }
 
-    private OnClickListener switchToGlass = new OnClickListener(){
+    private OnClickListener startFlight = new OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
-            //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
-            //toast.show();
             Intent intent = new Intent(context, Glass.class);
             startActivity(intent);
         };
     };
 
-    private OnClickListener switchToPreferences = new OnClickListener(){
+    private OnClickListener manageFlight = new OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
-            //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
-            //toast.show();
-            Intent intent = new Intent(context, preferencesActivity.class);
+            Intent intent = new Intent(context, manageFlightPlans.class);
+            startActivity(intent);
+        };
+    };
+
+    private OnClickListener createFlight = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass.class);
             startActivity(intent);
         };
     };
@@ -72,21 +77,12 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//
-//            return true;
-//        }
-
-        //return super.onOptionsItemSelected(item);
 
         Context context = getApplicationContext();
         Intent intent;
         switch (item.getItemId()) {
             case R.id.action_resources:
-                intent = new Intent(context, Glass.class);
+                intent = new Intent(context, manageResources.class);
                 startActivity(intent);
                 return true;
             case R.id.action_preferences:

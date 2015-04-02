@@ -44,6 +44,54 @@
             android:name=".Glass3"
             android:label="@string/title_activity_glass3" >
         </activity>
+        <activity
+            android:name=".addAircraftActivity"
+            android:label="@string/title_activity_add_aircraft"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.MainActivity" />
+        </activity>
+        <activity
+            android:name=".manageResources"
+            android:label="@string/title_activity_manage_resources"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.MainActivity" />
+        </activity>
+        <activity
+            android:name=".aircraftActivity"
+            android:label="@string/title_activity_aircraft"
+            android:parentActivityName=".manageResources" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.manageResources" />
+        </activity>
+        <activity
+            android:name=".manageFlightPlans"
+            android:label="@string/title_activity_manage_flight_plans"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.MainActivity" />
+        </activity>
+        <activity
+            android:name=".flightPlanDetails"
+            android:label="@string/title_activity_flight_plan_details"
+            android:parentActivityName=".manageFlightPlans" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.manageFlightPlans" />
+        </activity>
+        <activity
+            android:name=".aircraftDetails"
+            android:label="@string/title_activity_aircraft_details"
+            android:parentActivityName=".aircraftActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.aircraftActivity" />
+        </activity>
     </application>
 
 </manifest>

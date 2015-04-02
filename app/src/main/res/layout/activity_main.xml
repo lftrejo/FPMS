@@ -15,30 +15,8 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
-    <Button
-    android:layout_width="100dp"
-    android:layout_height="70dp"
-    android:text="@string/load_flight"
-    android:id="@+id/loadFlight"
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true" />
 
-<Button
-    android:layout_width="100dp"
-    android:layout_height="70dp"
-    android:text="@string/startFlight"
-    android:id="@+id/startFlight"
-    android:layout_alignTop="@+id/loadFlight"
-    android:layout_alignParentEnd="true"
-    android:onClick="switchToSettings" />
 
-<Button
-    android:layout_width="100dp"
-    android:layout_height="70dp"
-    android:text="@string/new_flight"
-    android:id="@+id/newFlight"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentStart="true" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -46,7 +24,7 @@ tools:context=".MainActivity">
         android:id="@+id/scrollView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/loadFlight"
+        android:layout_above="@+id/linearButtons"
         android:layout_alignParentEnd="true" >
 
         <HorizontalScrollView
@@ -66,6 +44,48 @@ tools:context=".MainActivity">
         </HorizontalScrollView>
 
     </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearButtons"
+        android:layout_alignParentEnd="true">
+
+
+        <Button
+            android:layout_width="250px"
+            android:layout_height="fill_parent"
+            android:text="@string/load_flight"
+            android:id="@+id/loadFlight"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858" />
+
+        <Button
+            android:layout_width="250px"
+            android:layout_height="fill_parent"
+            android:text="@string/startFlight"
+            android:id="@+id/startFlight"
+            android:layout_alignTop="@+id/loadFlight"
+            android:layout_alignParentEnd="true"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/new_flight"
+            android:id="@+id/newFlight"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858"  />
+
+    </LinearLayout>
 
 
 

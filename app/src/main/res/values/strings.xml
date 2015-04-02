@@ -20,4 +20,10 @@
     <string name="startFlight">Start Flight</string>
     <string name="title_activity_glass2">Glass2</string>
     <string name="title_activity_glass3">Glass3</string>
+    <string name="title_activity_add_aircraft">addAircraftActivity</string>
+    <string name="title_activity_manage_resources">Manage Resources</string>
+    <string name="title_activity_aircraft">aircraftActivity</string>
+    <string name="title_activity_manage_flight_plans">manageFlightPlans</string>
+    <string name="title_activity_flight_plan_details">flightPlanDetails</string>
+    <string name="title_activity_aircraft_details">aircraftDetails</string>
 </resources>
