@@ -1,10 +1,12 @@
 package com.se2.team3.fpms;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.content.Context;
 import android.os.Handler;
@@ -17,9 +19,30 @@ public class Glass extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glass);
+
+        Button buttonLeft = (Button) findViewById(R.id.buttonleft);
+        buttonLeft.setOnClickListener(goLeft);
+        Button buttonRight = (Button) findViewById(R.id.buttonleft);
+        buttonLeft.setOnClickListener(goRight);
+
         speedLoop();
     }
 
+    private View.OnClickListener goLeft = new View.OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass3.class);
+            startActivity(intent);
+        };
+    };
+
+    private View.OnClickListener goRight = new View.OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass2.class);
+            startActivity(intent);
+        };
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

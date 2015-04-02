@@ -53,7 +53,7 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:text="&lt;"
-        android:id="@+id/button3"
+        android:id="@+id/buttonleft"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:background="#ff000000"
