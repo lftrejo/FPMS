@@ -111,7 +111,7 @@ public class Glass3 extends ActionBarActivity
                 return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        //return super.onOptionsItemSelected(item);
     }
 
     public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {

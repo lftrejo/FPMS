@@ -88,6 +88,9 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_preferences:
                 startActivity(new Intent(getApplicationContext(), preferencesActivity.class));
                 return true;
+            case R.id.action_maps:
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                return true;
             case R.id.action_exit:
                 new AlertDialog.Builder(this).setTitle("FPMS").setMessage("\n  Created By Team 3\n  Software Engineering II").show();
                 return false;
