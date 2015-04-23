@@ -25,6 +25,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         (Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_LONG)).show();
+        Airports.readAirports(getResources().openRawResource(R.raw.airports));
+        //MapsActivity.planeInit();
 
 //        Temporarily removed to work without fragments, will be restored in the short future
 //

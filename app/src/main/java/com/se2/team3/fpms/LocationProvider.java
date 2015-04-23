@@ -85,8 +85,12 @@ public class LocationProvider {
 
                 // Move the current location by lat and lngSpeed
                 private void nextLoc() {
-                    loc.setLatitude(loc.getLatitude() + (latSpeed * 1e-4));
-                    loc.setLongitude(loc.getLongitude() + (longSpeed * 1e-4));
+                    double newLat = loc.getLatitude() + (latSpeed * 1e-4);
+                    double newLong = loc.getLongitude() + (longSpeed * 1e-4);
+                    loc.setLatitude(newLat);
+                    loc.setLongitude(newLong);
+                    MapsActivity.planeChangePosition(newLat,newLong);
+
                 }
 
                 private void setSpeed(float latSpeed, float longSpeed) {

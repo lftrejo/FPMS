@@ -13,9 +13,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    public static MarkerOptions plane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +69,6 @@ public class MapsActivity extends FragmentActivity {
      */
     private void setUpMap() {
         //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title(""));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(31.80725, -106.377583)).title("El Paso International Airport").snippet("The rest of the information on this airport"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(29.645419, -95.278889)).title("Dallas / Fort Worth Airport").snippet("The rest of the information on this airport"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(29.533694, -98.469778)).title("San Antonio Airport").snippet("The rest of the information on this airport"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(31.80725, -106.377583), 8));
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.addPolyline(new PolylineOptions().color(Color.CYAN).geodesic(true)
@@ -76,6 +76,37 @@ public class MapsActivity extends FragmentActivity {
                 .add(new LatLng(29.533694, -98.469778))
                 .add(new LatLng(29.645419, -95.278889)));
 
+
+
+        planeInit();
+        mMap.addMarker(plane);
+        addAirports();
+    }
+
+    public void addAirports(){
+//        InputStream inputStream = getResources().openRawResource(R.raw.airports);
+//        Airports csvFile = new Airports(inputStream);
+        List scoreList = Airports.getAirports();
+        String[] item;// = (String[])scoreList.remove(0);
+
+
+        int i =0;
+        while (i<scoreList.size()){
+            item = (String[])scoreList.get(i);
+            //if (item[3].substring(1,item[3].length()-1).equals("United States"))
+            mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(item[6]),Double.parseDouble( item[7]))).title(item[1]).snippet(item[2]+" , "+item[3]));
+            i++;
+        }
+    }
+
+    public void clearAirports(){
+        mMap.clear();
+    }
+
+    public static void planeChangePosition(double lat, double lon){
+        plane.position(new LatLng(lat,lon));
+    }
+    public static void planeInit(){
         Location loc = new Location("loc 1");
         Location loc2 = new Location("loc 1");
 
@@ -83,11 +114,11 @@ public class MapsActivity extends FragmentActivity {
         loc.setLongitude(-106.377583);
         loc2.setLatitude(29.533694);
         loc2.setLongitude(-98.469778);
-        mMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.airplanesmall))
-                        //.anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+
+        plane = (new MarkerOptions()).icon(BitmapDescriptorFactory.fromResource(R.drawable.airplanesmall))
+                //.anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
                 .position(new LatLng(31.80725, -106.377583))
                 .rotation(loc.bearingTo(loc2))
-                .flat(true));
+                .flat(true);
     }
 }
