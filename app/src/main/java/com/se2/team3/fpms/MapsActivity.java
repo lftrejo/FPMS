@@ -1,6 +1,7 @@
 package com.se2.team3.fpms;
 
 import android.graphics.Color;
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -74,10 +75,19 @@ public class MapsActivity extends FragmentActivity {
                 .add(new LatLng(31.80725, -106.377583))
                 .add(new LatLng(29.533694, -98.469778))
                 .add(new LatLng(29.645419, -95.278889)));
+
+        Location loc = new Location("loc 1");
+        Location loc2 = new Location("loc 1");
+
+        loc.setLatitude(31.80725);
+        loc.setLongitude(-106.377583);
+        loc2.setLatitude(29.533694);
+        loc2.setLongitude(-98.469778);
         mMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.airplaneicon))
-                //.anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                .position(new LatLng(30.212066, -101.353882))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.airplanesmall))
+                        //.anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(31.80725, -106.377583))
+                .rotation(loc.bearingTo(loc2))
                 .flat(true));
     }
 }
