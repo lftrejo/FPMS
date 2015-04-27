@@ -1,15 +1,18 @@
 package com.se2.team3.fpms;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -18,12 +21,48 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+        (Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_LONG)).show();
+
+//        Temporarily removed to work without fragments, will be restored in the short future
+//
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.container, new PlaceholderFragment())
+//                    .commit();
+//        }
+
+        Button loadFlight = (Button) findViewById(R.id.loadFlight);
+        loadFlight.setOnClickListener(manageFlight);
+        Button startFlightButton = (Button) findViewById(R.id.startFlight);
+        startFlightButton.setOnClickListener(startFlight);
+        Button newFlightButton = (Button) findViewById(R.id.newFlight);
+        newFlightButton.setOnClickListener(createFlight);
     }
+
+    private OnClickListener startFlight = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass.class);
+            startActivity(intent);
+        };
+    };
+
+    private OnClickListener manageFlight = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, manageFlightPlans.class);
+            startActivity(intent);
+        };
+    };
+
+    private OnClickListener createFlight = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            Intent intent = new Intent(context, Glass.class);
+            startActivity(intent);
+        };
+    };
+
 
 
     @Override
@@ -38,15 +77,32 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Context context = getApplicationContext();
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_resources:
+                intent = new Intent(context, manageResources.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_preferences:
+                intent = new Intent(context, preferencesActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_exit:
+                intent = new Intent(context, preferencesActivity.class);
+                startActivity(intent);
+                return false;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
+
+    /*
+    public void switchToSettings(View view){
+        Intent intent = new Intent(this, SettingsActivity.class);
+    }*/
 
     /**
      * A placeholder fragment containing a simple view.
