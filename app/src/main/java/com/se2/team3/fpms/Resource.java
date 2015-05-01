@@ -9,6 +9,8 @@ public class Resource
     implements Serializable {
         private String name;
 
+        public Resource() { this.name = "Avenger Cameo"; }
+
         public Resource(String name) {
             this.name = name;
         }
@@ -17,7 +19,7 @@ public class Resource
             return name;
         }
 
-        public boolean compareTo(String name) {
+        public boolean equalTo(String name) {
             return this.name.equalsIgnoreCase(name.toLowerCase());
         }
     }

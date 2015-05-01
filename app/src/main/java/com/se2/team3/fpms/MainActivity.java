@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,10 +17,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity
         extends ActionBarActivity
 {
+    private ResourceManager mResourceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,30 @@ public class MainActivity
 
         Button newFlight = (Button) findViewById(R.id.newFlight);
         newFlight.setOnClickListener(switchToNewFlight);
+
+        // Initialize resource manager
+        mResourceManager = new ResourceManager(this);
+        mResourceManager.init();
+
+        //test resource manager
+        List<FlightPlan> entries = new ArrayList<FlightPlan>();
+        entries.add(new FlightPlan("House"));
+        entries.add(new FlightPlan("Car"));
+        entries.add(new FlightPlan("Job"));
+
+        for (FlightPlan entry : entries) {
+            mResourceManager.add(entry);
+        }
+
+        for (FlightPlan entry : mResourceManager.getFlightPlanList()) {
+            Log.d("FP", entry.name);
+        }
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        mResourceManager.close();
+        Log.d("Destroy", "onDestroy");
     }
 
     private OnClickListener switchToNewFlight = new OnClickListener(){
