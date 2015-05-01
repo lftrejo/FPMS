@@ -1,30 +1,38 @@
 package com.se2.team3.fpms;
 
 import android.graphics.Color;
+import android.location.GpsStatus;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity extends FragmentActivity implements AircraftMotionListener{
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private static GoogleMap mMap; // Might be null if Google Play services APK is not available.
     public static MarkerOptions plane;
+    List<LatLng> points = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
+        AircraftMotionManager.getInstance().addAircraftMotionUpdates(this);
     }
 
     @Override
@@ -59,6 +67,15 @@ public class MapsActivity extends FragmentActivity {
                 setUpMap();
             }
         }
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                          @Override public boolean onMarkerClick(Marker marker) {
+                                              addPoint(marker.getPosition());
+                                              drawLine();
+                                              return true;
+                                          }
+                                      }
+        );
+
     }
 
     /**
@@ -71,16 +88,40 @@ public class MapsActivity extends FragmentActivity {
         //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title(""));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(31.80725, -106.377583), 8));
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        mMap.addPolyline(new PolylineOptions().color(Color.CYAN).geodesic(true)
-                .add(new LatLng(31.80725, -106.377583))
-                .add(new LatLng(29.533694, -98.469778))
-                .add(new LatLng(29.645419, -95.278889)));
+//        mMap.addPolyline(new PolylineOptions().color(Color.CYAN).geodesic(true)
+//                .add(new LatLng(31.80725, -106.377583))
+//                .add(new LatLng(29.533694, -98.469778))
+//                .add(new LatLng(29.645419, -95.278889)));
 
-
+//        addPoint(new LatLng(31.80725, -106.377583));
+//        addPoint(new LatLng(29.533694, -98.469778));
+//        addPoint(new LatLng(29.645419, -95.278889));
+//        drawLine();
 
         planeInit();
         mMap.addMarker(plane);
+
         addAirports();
+    }
+
+    public boolean onMarkerClick(Marker marker){
+        addPoint(marker.getPosition());
+        drawLine();
+        return true;
+    }
+
+    public void drawLine(){
+        PolylineOptions lineTemp = new PolylineOptions().color(Color.CYAN).geodesic(true);
+        Iterator<LatLng> pointsTemp = points.iterator();
+        while (pointsTemp.hasNext()){
+            lineTemp.add(pointsTemp.next());
+        }
+        mMap.addPolyline(lineTemp);
+    }
+
+    public void addPoint(LatLng point){
+        Log.d("point added", "point added");
+        points.add(point);
     }
 
     public void addAirports(){
@@ -104,7 +145,11 @@ public class MapsActivity extends FragmentActivity {
     }
 
     public static void planeChangePosition(double lat, double lon){
-        plane.position(new LatLng(lat,lon));
+        Log.d("plane position changed", "plane position changed");
+        mMap.clear();
+        plane.position(new LatLng(lat, lon));
+        mMap.addMarker(plane);
+
     }
     public static void planeInit(){
         Location loc = new Location("loc 1");
@@ -120,5 +165,11 @@ public class MapsActivity extends FragmentActivity {
                 .position(new LatLng(31.80725, -106.377583))
                 .rotation(loc.bearingTo(loc2))
                 .flat(true);
+    }
+
+    @Override
+    public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
+        Log.d("onAircraftMotion called","onAircraftMotion called");
+        planeChangePosition(location.getLatitude(),location.getLongitude());
     }
 }
