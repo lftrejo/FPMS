@@ -49,7 +49,6 @@ public class Glass3 extends ActionBarActivity
         Button buttonRight = (Button) findViewById(R.id.buttonright3);
         buttonRight.setOnClickListener(goRight);
 
-
         txtHeading = (TextView) findViewById(R.id.txtHeading);
         txtAltitude = (TextView) findViewById(R.id.txtAltitude);
         txtLatLng = (TextView) findViewById(R.id.txtLatLng);
@@ -59,8 +58,6 @@ public class Glass3 extends ActionBarActivity
         airportLoc = new Location("FnPMS");
         airportLoc.setLatitude(airportLat);
         airportLoc.setLongitude(airportLong);
-
-
     }
 /*
     protected void onStop() {

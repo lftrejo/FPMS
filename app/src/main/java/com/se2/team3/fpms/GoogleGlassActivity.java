@@ -85,7 +85,7 @@ public class GoogleGlassActivity extends ActionBarActivity
     public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
         //Toast.makeText(this.getBaseContext(), "onAircraftMotion event", Toast.LENGTH_SHORT).show();
 
-        Log.i("GG", "onAircraftMotion(loc, spd, course)");
+//        Log.i("GG", "onAircraftMotion(loc, spd, course)");
         //if (checkBox.isChecked())
         checkBox.setChecked(true);
         txtLat.setText(Double.toString(location.getLatitude()));

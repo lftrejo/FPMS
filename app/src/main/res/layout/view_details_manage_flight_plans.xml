@@ -438,11 +438,10 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+        android:layout_height="60dp" >
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Home"
             android:id="@+id/button11"
@@ -450,7 +449,7 @@
             android:textColor="#ffcbcbcb" />
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Save"
             android:id="@+id/button12"
@@ -458,7 +457,7 @@
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Delete"
             android:id="@+id/button13"
@@ -466,7 +465,7 @@
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:id="@+id/button14"

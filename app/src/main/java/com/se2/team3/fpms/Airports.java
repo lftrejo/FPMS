@@ -22,10 +22,7 @@ public class Airports {
 
     public static void readAirports(InputStream i){
         inputStream = i;
-        if(!initialized){
-            initialized=true;
-            read();
-        }
+        getAirports();
     }
 
     public static ArrayList getAirports(){
@@ -45,16 +42,11 @@ public class Airports {
                     resultList.add(row);
             }
         }
-        catch (IOException ex) {
-            throw new RuntimeException("Error in reading CSV file: "+ex);
-        }
+        catch (IOException ex) {throw new RuntimeException("Error in reading CSV file: "+ex); }
+
         finally {
-            try {
-                inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
-            }
+            try {inputStream.close(); }
+            catch (IOException e) {throw new RuntimeException("Error while closing input stream: "+e); }
         }
         return resultList;
     }

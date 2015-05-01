@@ -18,37 +18,37 @@ tools:context=".MainActivity">
 
 
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/linearButtons"
-        android:layout_alignParentEnd="true" >
+    <!--<ScrollView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/scrollView"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_above="@+id/linearButtons"-->
+        <!--android:layout_alignParentEnd="true" >-->
 
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/horizontalScrollView">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView2"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignBottom="@+id/scrollView"
-                android:layout_alignEnd="@+id/startFlight"
-                android:src="@drawable/bravo_sectional"
-                android:scaleType="matrix" />
-        </HorizontalScrollView>
+        <!--<HorizontalScrollView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/horizontalScrollView">-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/imageView2"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignBottom="@+id/scrollView"-->
+                <!--android:layout_alignEnd="@+id/startFlight"-->
+                <!--android:src="@drawable/bravo_sectional"-->
+                <!--android:scaleType="matrix" />-->
+        <!--</HorizontalScrollView>-->
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="100px"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearButtons"
@@ -56,37 +56,41 @@ tools:context=".MainActivity">
 
 
         <Button
-            android:layout_width="250px"
+            android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:text="@string/load_flight"
             android:id="@+id/loadFlight"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="250px"
+            android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:text="@string/startFlight"
             android:id="@+id/startFlight"
-            android:layout_alignTop="@+id/loadFlight"
-            android:layout_alignParentEnd="true"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:text="@string/new_flight"
             android:id="@+id/newFlight"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858"  />
 
     </LinearLayout>
 
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/map"
+        android:layout_above="@+id/linearButtons"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <!--tools:context="com.se2.team3.fpms.MapsActivity"-->
 
 
 </RelativeLayout>
