@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Resource
     implements Serializable {
-        private String name;
+        protected String name;
 
         public Resource() { this.name = "Avenger Cameo"; }
 

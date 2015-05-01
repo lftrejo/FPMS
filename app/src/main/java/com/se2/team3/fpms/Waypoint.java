@@ -3,6 +3,7 @@ package com.se2.team3.fpms;
 import android.location.Location;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Scott on 4/30/2015.
@@ -21,6 +22,7 @@ public class Waypoint
         testLoc.setLatitude(testLat);
         testLoc.setLongitude(testLong);
         loc = testLoc;
+        RTA = new GregorianCalendar(0,0,0,0,10,0);  // 10 minutes
     }
 
     public String getName() {

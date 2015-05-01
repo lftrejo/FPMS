@@ -8,6 +8,16 @@ import android.graphics.Bitmap;
 public class Airport
     extends Waypoint{
     Bitmap airportMap;
+    String runwayClosures;
+    int operatingHours;
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Bitmap getAirportMap() {
         return airportMap;
@@ -15,5 +25,21 @@ public class Airport
 
     public void setAirportMap(Bitmap airportMap) {
         this.airportMap = airportMap;
+    }
+
+    public String getRunwayClosures() {
+        return runwayClosures;
+    }
+
+    public void setRunwayClosures(String runwayClosures) {
+        this.runwayClosures = runwayClosures;
+    }
+
+    public int getOperatingHours() {
+        return operatingHours;
+    }
+
+    public void setOperatingHours(int operatingHours) {
+        this.operatingHours = operatingHours;
     }
 }
