@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FPMS5.iml" filepath="$PROJECT_DIR$/FPMS5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FPMS3.iml" filepath="$PROJECT_DIR$/FPMS3.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/flightstatus_card/flightstatus_card.iml" filepath="$PROJECT_DIR$/flightstatus_card/flightstatus_card.iml" />
     </modules>

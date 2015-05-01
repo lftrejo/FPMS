@@ -9,10 +9,21 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
     You can also add your credentials to an existing key, using this line:
     50:CB:75:69:42:CB:A5:41:F5:C7:12:07:86:1B:35:30:EA:00:EA:D2;com.se2.team3.fpms
 
+    This won't give the debug key. You need to find your sha1 key and then get an api key for yourself and replace below.
+    Check out this site for how:
+    http://stackoverflow.com/questions/27609442/how-to-get-the-sha1-fingerprint-certificate-in-android-studio-for-debug-mode
+
+    Scott Debug SHA1 key:
+    8A:DA:63:E0:1E:05:3B:8A:15:4C:81:B5:AB:D5:D5:5B:D5:F1:CA:DC;com.se2.team3.fpms
+    Scott api key:
+    AIzaSyBya7GYK-3HW4DGysJLJh9O5cdw7Twf6-U
+
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
+
+    AIzaSyDa2TlM0pJ9sfXlyjxP-24gwba403TN0pM
     -->
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-        AIzaSyDa2TlM0pJ9sfXlyjxP-24gwba403TN0pM
+        AIzaSyBya7GYK-3HW4DGysJLJh9O5cdw7Twf6-U
     </string>
 </resources>

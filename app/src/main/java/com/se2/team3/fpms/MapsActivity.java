@@ -25,7 +25,7 @@ public class MapsActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.home_map);
         setUpMapIfNeeded();
 
         // Listen to AircraftMotionEvents

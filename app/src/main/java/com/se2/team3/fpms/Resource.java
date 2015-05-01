@@ -1,0 +1,23 @@
+package com.se2.team3.fpms;
+
+import java.io.Serializable;
+
+/**
+ * Created by Scott on 4/30/2015.
+ */
+public class Resource
+    implements Serializable {
+        private String name;
+
+        public Resource(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public boolean compareTo(String name) {
+            return this.name.equalsIgnoreCase(name.toLowerCase());
+        }
+    }
