@@ -1,0 +1,68 @@
+<!--This was removed to work without fragments for the time being, we will be
+    using fragments in the future though as it is more efficient and more
+    manageable. To re enable fragment simply uncomment this block, delete the
+    relativeLayout that was added afterwards and uncomment the call to the
+    fragmentManager in the onCreate() of MainActivity
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"-->
+<!--android:layout_width="match_parent" android:layout_height="match_parent"-->
+<!--tools:context=".MainActivity" tools:ignore="MergeRootFrame" />-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:id="@+id/map"
+        tools:context="com.se2.team3.fpms.MapsActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearButtons"
+        android:layout_alignParentEnd="true">
+
+
+        <Button
+            android:layout_width="250px"
+            android:layout_height="fill_parent"
+            android:text="@string/load_flight"
+            android:id="@+id/loadFlight"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858" />
+
+        <Button
+            android:layout_width="250px"
+            android:layout_height="fill_parent"
+            android:text="@string/startFlight"
+            android:id="@+id/startFlight"
+            android:layout_alignTop="@+id/loadFlight"
+            android:layout_alignParentEnd="true"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/new_flight"
+            android:id="@+id/newFlight"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#ffcbcbcb"
+            android:background="#ff585858"  />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
