@@ -4,33 +4,32 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class MainActivity
+/**
+ * Created by Scott on 5/1/2015.
+ */
+public class HomeMapActivity
         extends ActionBarActivity
 {
-    /*
     private ResourceManager mResourceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.home_map);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //(Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_LONG)).show();
         //Airports.readAirports(getResources().openRawResource(R.raw.airports));
@@ -44,41 +43,30 @@ public class MainActivity
 //                    .commit();
 //        }
 
-        Button loadFlight = (Button) findViewById(R.id.loadFlight);
-        loadFlight.setOnClickListener(switchToGlass);
+        // Set event handler for bottom buttons
+        Button btnLeft = (Button) findViewById(R.id.btnLeft);
+        btnLeft.setOnClickListener(switchToGlass);
 //        loadFlight.setText("another");
         //Button settings = (Button) findViewById(R.id.startFlight);
         //settings.setOnClickListener(switchToPreferences);
 
-        Button newFlight = (Button) findViewById(R.id.newFlight);
-        newFlight.setOnClickListener(switchToNewFlight);
+        Button btnCenter = (Button) findViewById(R.id.btnCenter);
+        btnCenter.setOnClickListener(switchToNewFlight);
+
+        Button btnRight = (Button) findViewById(R.id.btnRight);
+        btnRight.setOnClickListener(switchToNewFlight);
 
         // Initialize resource manager
         mResourceManager = new ResourceManager(this);
         mResourceManager.init();
-
-        //test resource manager
-        List<FlightPlan> entries = new ArrayList<FlightPlan>();
-        entries.add(new FlightPlan("House"));
-        entries.add(new FlightPlan("Car"));
-        entries.add(new FlightPlan("Job"));
-
-        for (FlightPlan entry : entries) {
-            mResourceManager.add(entry);
-        }
-
-        for (FlightPlan entry : mResourceManager.getFlightPlanList()) {
-            Log.d("FP", entry.name);
-        }
     }
 
     protected void onDestroy() {
         super.onDestroy();
         mResourceManager.close();
-        Log.d("Destroy", "onDestroy");
     }
 
-    private OnClickListener switchToNewFlight = new OnClickListener(){
+    private View.OnClickListener switchToNewFlight = new View.OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
             //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
@@ -87,7 +75,7 @@ public class MainActivity
             startActivity(intent);
         };
     };
-    private OnClickListener switchToGlass = new OnClickListener(){
+    private View.OnClickListener switchToGlass = new View.OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
             Intent intent = new Intent(context, Glass.class);
@@ -95,7 +83,7 @@ public class MainActivity
         };
     };
 
-    private OnClickListener manageFlight = new OnClickListener(){
+    private View.OnClickListener manageFlight = new View.OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
             Intent intent = new Intent(context, manageFlightPlans.class);
@@ -103,7 +91,7 @@ public class MainActivity
         };
     };
 
-    private OnClickListener createFlight = new OnClickListener(){
+    private View.OnClickListener createFlight = new View.OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
             Intent intent = new Intent(context, Glass.class);
@@ -165,6 +153,4 @@ public class MainActivity
             return rootView;
         }
     }
-
 }
-

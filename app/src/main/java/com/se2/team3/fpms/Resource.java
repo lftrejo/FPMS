@@ -22,4 +22,10 @@ public class Resource
         public boolean equalTo(String name) {
             return this.name.equalsIgnoreCase(name.toLowerCase());
         }
+
+
+        public boolean match(String name) {
+            String n = this.name.toLowerCase();
+            return this.name.contains(name.toLowerCase());
+        }
     }

@@ -34,8 +34,8 @@
         <Button
             android:layout_width="250px"
             android:layout_height="fill_parent"
-            android:text="@string/load_flight"
-            android:id="@+id/loadFlight"
+            android:text="Open"
+            android:id="@+id/btnLeft"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ffcbcbcb"
@@ -44,8 +44,8 @@
         <Button
             android:layout_width="250px"
             android:layout_height="fill_parent"
-            android:text="@string/startFlight"
-            android:id="@+id/startFlight"
+            android:text="New"
+            android:id="@+id/btnCenter"
             android:layout_alignTop="@+id/loadFlight"
             android:layout_alignParentEnd="true"
             android:textColor="#ffcbcbcb"
@@ -54,8 +54,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:text="@string/new_flight"
-            android:id="@+id/newFlight"
+            android:text="Settings"
+            android:id="@+id/btnRight"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:textColor="#ffcbcbcb"

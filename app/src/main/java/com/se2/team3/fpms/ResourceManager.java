@@ -1,14 +1,21 @@
 package com.se2.team3.fpms;
 
 import android.content.Context;
+import android.location.Location;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -26,6 +33,9 @@ public class ResourceManager {
         mContext = context;
         String tag;
 
+        externalImport();
+
+        /*
         // default FlightPlan
         List<FlightPlan> cachedFlightPlans = new ArrayList<FlightPlan>();
         cachedFlightPlans.add(new FlightPlan("default"));
@@ -67,6 +77,7 @@ public class ResourceManager {
         } catch (IOException e) {
             Log.e(tag, e.getMessage());
         }
+        */
 
     }
 
@@ -75,6 +86,7 @@ public class ResourceManager {
     public void init() {
         String tag;
 
+        /*
         // Load flight plans
         tag = "FlightPlan";
         try {
@@ -104,7 +116,7 @@ public class ResourceManager {
         } catch (ClassNotFoundException e) {
             Log.e(tag, e.getMessage());
         }
-
+*/
         // Load Airports
         tag = "Airport";
         try {
@@ -191,6 +203,81 @@ public class ResourceManager {
 
     public void delete(Airport r) {
         cachedAirports.remove(r);
+    }
+
+    // Find all airports partialy or completly matching
+    public List<Airport> findAirports(String name) {
+        Iterator i = cachedAirports.iterator();
+        List<Airport> matchList = new ArrayList<Airport>();
+
+        while(i.hasNext()) {
+            Airport a = (Airport) i.next();
+            if(a.match(name))
+                matchList.add((Airport) i.next());
+        }
+
+        return matchList;
+    }
+
+    public void externalImport() {
+        // Load external airports
+        parseAirports(read(mContext.getResources().openRawResource(R.raw.us_airports)));
+    }
+
+    private ArrayList read(InputStream inputStream){
+        ArrayList resultList = new ArrayList();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        try {
+            String csvLine;
+            while ((csvLine = reader.readLine()) != null) {
+                String[] row = csvLine.split(",");
+                if (row[3].substring(1,row[3].length()-1).equals("United States"))
+                    resultList.add(row);
+            }
+        }
+        catch (IOException ex) {
+            throw new RuntimeException("Error in reading CSV file: "+ex);
+        }
+        finally {
+            try {
+                inputStream.close();
+            }
+            catch (IOException e) {
+                throw new RuntimeException("Error while closing input stream: "+e);
+            }
+        }
+        return resultList;
+    }
+
+    // parse an external csv file containing airports
+    private void parseAirports(List list) {
+        String[] item;// = (String[])scoreList.remove(0);
+
+        int i = 0;
+        Airport a;
+        while (i < list.size()){
+            a = new Airport();
+            cachedAirports.add(a);
+            item = (String[])list.get(i);
+
+            // Name
+            a.setName(item[4] + " - " + item[1]);
+
+            // Lat Long
+            Location loc = new Location("FPMS");
+            loc.setLatitude(Double.parseDouble(item[6]));
+            loc.setLatitude(Double.parseDouble(item[7]));
+            a.setLoc(loc);
+
+            // runway closures
+            a.setRunwayClosures(item[5]);
+
+            // operating hours
+            a.setOperatingHours(Math.abs(Integer.parseInt(item[9])));
+
+            i++;
+        }
     }
 
 }
