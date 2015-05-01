@@ -24,7 +24,6 @@ import java.util.List;
 public class MainActivity
         extends ActionBarActivity
 {
-    /*
     private ResourceManager mResourceManager;
 
     @Override
@@ -58,6 +57,7 @@ public class MainActivity
         mResourceManager.init();
 
         //test resource manager
+        /*
         List<FlightPlan> entries = new ArrayList<FlightPlan>();
         entries.add(new FlightPlan("House"));
         entries.add(new FlightPlan("Car"));
@@ -70,12 +70,13 @@ public class MainActivity
         for (FlightPlan entry : mResourceManager.getFlightPlanList()) {
             Log.d("FP", entry.name);
         }
+        */
     }
 
     protected void onDestroy() {
         super.onDestroy();
         mResourceManager.close();
-        Log.d("Destroy", "onDestroy");
+        //Log.d("Destroy", "onDestroy");
     }
 
     private OnClickListener switchToNewFlight = new OnClickListener(){
@@ -148,7 +149,7 @@ public class MainActivity
     /*
     public void switchToSettings(View view){
         Intent intent = new Intent(this, SettingsActivity.class);
-    }*/
+    }
 
     /**
      * A placeholder fragment containing a simple view.

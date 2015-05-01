@@ -1,9 +1,18 @@
 package com.se2.team3.fpms;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,29 +22,97 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class MapsActivity
-        extends FragmentActivity
+        extends ActionBarActivity
         implements AircraftMotionListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     public static MarkerOptions plane;
+    private ResourceManager mResourceManager;
+    private MapState mapState = MapState.HOME;
+
+    private enum MapState {HOME, EDIT, FLIGHT}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_map);
-        setUpMapIfNeeded();
 
         // Listen to AircraftMotionEvents
         AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
+
+        // Initialize resource manager
+        mResourceManager = new ResourceManager(this);
+        mResourceManager.init();
+
+        setUpMapIfNeeded();
+
+
+
+        // Set event handler for bottom buttons
+        Button btnLeft = (Button) findViewById(R.id.btnLeft);
+        Button btnCenter = (Button) findViewById(R.id.btnCenter);
+        Button btnRight = (Button) findViewById(R.id.btnRight);
+
+        switch (mapState) {
+        case HOME:
+            btnRight.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), preferencesActivity.class));
+                }
+            });
+        break;
+        case EDIT:
+        }
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        mResourceManager.close();
+        //Log.d("Destroy", "onDestroy");
+    }
+
+    /**
+     *
+     * Setup Menu
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        switch (item.getItemId()) {
+            case R.id.action_resources:
+                startActivity(new Intent(getApplicationContext(), manageResources.class));
+                return true;
+            case R.id.action_preferences:
+                startActivity(new Intent(getApplicationContext(), preferencesActivity.class));
+                return true;
+            case R.id.action_exit:
+                new AlertDialog.Builder(this).setTitle("FPMS").setMessage("\n  Created By Team 3\n  Software Engineering II").show();
+                return false;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     /**
@@ -57,7 +134,7 @@ public class MapsActivity
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.home_map))
                     .getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
@@ -89,18 +166,16 @@ public class MapsActivity
     }
 
     public void addAirports(){
-//        InputStream inputStream = getResources().openRawResource(R.raw.airports);
-//        Airports csvFile = new Airports(inputStream);
-        List scoreList = Airports.getAirports();
-        String[] item;// = (String[])scoreList.remove(0);
+        if (mResourceManager == null)
+            Log.d("FPMS", "mResourceManager NULL");
+        Iterator i = mResourceManager.getAirportList().iterator();
+        while (i.hasNext()) {
+            Airport a = (Airport) i.next();
+            mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(a.getLoc().getLatitude(),
+                            a.getLoc().getLongitude()))
+                    .title(a.getName()));
 
-
-        int i =0;
-        while (i<scoreList.size()){
-            item = (String[])scoreList.get(i);
-            //if (item[3].substring(1,item[3].length()-1).equals("United States"))
-            mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(item[6]),Double.parseDouble( item[7]))).title(item[1]).snippet(item[2]+" , "+item[3]));
-            i++;
         }
     }
 

@@ -33,6 +33,9 @@ public class ResourceManager {
         mContext = context;
         String tag;
 
+        // Initialize caches
+        cachedAirports = new ArrayList<Airport>();
+
         externalImport();
 
         /*
@@ -171,6 +174,10 @@ public class ResourceManager {
 
     public List<FlightPlan> getFlightPlanList() {
         return cachedFlightPlans;
+    }
+
+    public List<Airport> getAirportList() {
+        return cachedAirports;
     }
 
     public void add(FlightPlan fp) {
