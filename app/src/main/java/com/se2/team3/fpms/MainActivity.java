@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity
+        extends ActionBarActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +41,8 @@ public class MainActivity extends ActionBarActivity {
         Button loadFlight = (Button) findViewById(R.id.loadFlight);
         loadFlight.setOnClickListener(switchToGlass);
 //        loadFlight.setText("another");
-        Button settings = (Button) findViewById(R.id.startFlight);
-        settings.setOnClickListener(switchToPreferences);
+        //Button settings = (Button) findViewById(R.id.startFlight);
+        //settings.setOnClickListener(switchToPreferences);
 
         Button newFlight = (Button) findViewById(R.id.newFlight);
         newFlight.setOnClickListener(switchToNewFlight);

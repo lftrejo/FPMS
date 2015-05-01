@@ -15,7 +15,9 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity
+        extends FragmentActivity
+        implements AircraftMotionListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     public static MarkerOptions plane;
@@ -25,6 +27,9 @@ public class MapsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
+
+        // Listen to AircraftMotionEvents
+        AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
     }
 
     @Override
@@ -120,5 +125,10 @@ public class MapsActivity extends FragmentActivity {
                 .position(new LatLng(31.80725, -106.377583))
                 .rotation(loc.bearingTo(loc2))
                 .flat(true);
+    }
+
+    @Override
+    public void onAircraftMotion(Location location, float trueAirspeed, float trueCourse) {
+        MapsActivity.planeChangePosition(location.getLatitude(), location.getLatitude());
     }
 }

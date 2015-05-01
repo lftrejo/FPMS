@@ -114,7 +114,7 @@ public class AircraftMotionManager
 
         // for now just see if this event sys works
         for (AircraftMotionListener listener : listeners) {
-            Log.i("AMM", "dispatch(location) listener:" + listener.toString());
+            //Log.i("AMM", "dispatch(location) listener:" + listener.toString());
             //Toast.makeText(gActivity.getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT);
             gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
                 public void run() {
@@ -131,7 +131,7 @@ public class AircraftMotionManager
         // send events if need be, don't send if nothing changed
 
         for (AircraftMotionListener listener : listeners) {
-            Log.i("AMM", "dispatch(windSpeed, windDirection) listener:" + listener.toString());
+            //Log.i("AMM", "dispatch(windSpeed, windDirection) listener:" + listener.toString());
             //Toast.makeText(gActivity.getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT);
             gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
                 public void run() {

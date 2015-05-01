@@ -89,8 +89,6 @@ public class LocationProvider {
                     double newLong = loc.getLongitude() + (longSpeed * 1e-4);
                     loc.setLatitude(newLat);
                     loc.setLongitude(newLong);
-                    MapsActivity.planeChangePosition(newLat,newLong);
-
                 }
 
                 private void setSpeed(float latSpeed, float longSpeed) {

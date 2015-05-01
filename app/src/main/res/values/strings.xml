@@ -16,6 +16,14 @@
         <item>Airport 5</item>
         <item>Airport 6</item>
     </string-array>
+    <string-array name="aircraftIDs">
+        <item>Aircraft 1</item>
+        <item>Aircraft 2</item>
+        <item>Aircraft 3</item>
+        <item>Aircraft 4</item>
+        <item>Aircraft 5</item>
+        <item>Aircraft 6</item>
+    </string-array>
     <string name="title_activity_glass">Glass</string>
     <string name="startFlight">Start Flight</string>
     <string name="title_activity_glass2">Glass2</string>
