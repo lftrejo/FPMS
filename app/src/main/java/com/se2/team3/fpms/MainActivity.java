@@ -16,7 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity
+        extends ActionBarActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,25 @@ public class MainActivity extends ActionBarActivity {
 //        }
 
         Button loadFlight = (Button) findViewById(R.id.loadFlight);
-        loadFlight.setOnClickListener(manageFlight);
-        Button startFlightButton = (Button) findViewById(R.id.startFlight);
-        startFlightButton.setOnClickListener(startFlight);
-        Button newFlightButton = (Button) findViewById(R.id.newFlight);
-        newFlightButton.setOnClickListener(createFlight);
+        loadFlight.setOnClickListener(switchToGlass);
+//        loadFlight.setText("another");
+        //Button settings = (Button) findViewById(R.id.startFlight);
+        //settings.setOnClickListener(switchToPreferences);
+
+        Button newFlight = (Button) findViewById(R.id.newFlight);
+        newFlight.setOnClickListener(switchToNewFlight);
     }
 
-    private OnClickListener startFlight = new OnClickListener(){
+    private OnClickListener switchToNewFlight = new OnClickListener(){
+        public void onClick(View v){
+            Context context = getApplicationContext();
+            //Toast toast = Toast.makeText(context, "Button Pressed", Toast.LENGTH_LONG);
+            //toast.show();
+            Intent intent = new Intent(context, createFlightPlanActivity.class);
+            startActivity(intent);
+        };
+    };
+    private OnClickListener switchToGlass = new OnClickListener(){
         public void onClick(View v){
             Context context = getApplicationContext();
             Intent intent = new Intent(context, Glass.class);
@@ -97,7 +111,6 @@ public class MainActivity extends ActionBarActivity {
                 return false;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
 
     }
