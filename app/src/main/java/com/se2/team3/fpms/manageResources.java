@@ -11,7 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+// Class that will display the main manu of the resource manager
+// which includes buttons for aircraft, routes and waypoints
 public class manageResources extends ActionBarActivity {
 
     @Override
@@ -19,7 +20,6 @@ public class manageResources extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_resources);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         Button loadFlight = (Button) findViewById(R.id.aircraftButton);
         loadFlight.setOnClickListener(manageAircraft);
         Button startFlightButton = (Button) findViewById(R.id.routesButton);

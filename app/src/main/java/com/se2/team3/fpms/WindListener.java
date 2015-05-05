@@ -1,8 +1,7 @@
 package com.se2.team3.fpms;
 
-/**
- * Created by Scott on 3/30/2015.
- */
+
+// Interface to be used by classes that listen to wind change events
 public interface WindListener {
     // callback sent when WindProvider senses change in local wind direction or speed
     void onWindChanged(float windDirection, float speed);

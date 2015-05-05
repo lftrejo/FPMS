@@ -28,10 +28,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
             android:name=".preferencesActivity"
             android:label="@string/title_activity_preferences" >
         </activity>
@@ -126,6 +122,14 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.se2.team3.fpms.MainActivity" />
+        </activity>
+        <activity
+            android:name=".inFlightActivity"
+            android:label="@string/title_activity_in_flight"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.se2.team3.fpms.MainActivity" />

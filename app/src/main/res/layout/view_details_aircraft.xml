@@ -315,12 +315,12 @@
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:id="@+id/button15"
-            android:textColor="#ffcbcbcb"
-            android:background="#ff585858" />
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/button15"
+        android:textColor="#ffcbcbcb"
+        android:background="#ff585858" />
     </LinearLayout>
 
 </LinearLayout>

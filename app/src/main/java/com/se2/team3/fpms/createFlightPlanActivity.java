@@ -8,8 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 
-
-
+// Class to display activity in which the user can create a new
+// flight plan, including selecting an aircraft, departure and
+// arrival airports, among other flight parameters
 public class createFlightPlanActivity extends ActionBarActivity {
 
     @Override
@@ -18,24 +19,22 @@ public class createFlightPlanActivity extends ActionBarActivity {
         setContentView(R.layout.activity_create_flight_plan);
 
         Spinner aircraftSpinner = (Spinner) findViewById(R.id.aircraftIDspinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.aircraftIDs, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         aircraftSpinner.setAdapter(adapter);
-
         Spinner departureSpinner = (Spinner) findViewById(R.id.departureSpinner);
-// Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         departureSpinner.setAdapter(adapter);
-
         Spinner destinationSpinner = (Spinner) findViewById(R.id.destinationSpinner);
-// Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         destinationSpinner.setAdapter(adapter);
     }
 

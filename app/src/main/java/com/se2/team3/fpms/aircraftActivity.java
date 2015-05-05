@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+// Class to display the activity where the user can select an aircraft
+// for the flight. In this activity the user can create, delete or edit
+// existing aircraft
 public class aircraftActivity extends ActionBarActivity {
 
     @Override

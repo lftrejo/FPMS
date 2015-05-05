@@ -4,9 +4,9 @@ import android.location.Location;
 
 import java.util.ArrayList;
 
-/**
- * Created by Scott on 3/30/2015.
- */
+// Class that creates the thread that will simulate the change in GPS
+// coordinates. Other classes will be listening to changes created
+// by this class.
 public class LocationProvider {
     private LocationListener listener;
 
@@ -36,7 +36,7 @@ public class LocationProvider {
 
 
             new Thread(new Runnable() {
-                private double lat = 31.7676; //UTEP CS building
+                private double lat = 31.7676;
                 private double lng = -106.5020;
                 private float latSpeed = 16; // m/s 16 = 72mph, 32=143mph, 64=268mph very rough
                 private float longSpeed = 16; // Latitude[+N, -S] longitude[+W, -E]

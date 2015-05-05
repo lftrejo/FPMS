@@ -21,7 +21,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-
+// Simulated Google glass screen
+// Replaced by the flightcards application on google glass
 public class Glass extends ActionBarActivity
     implements AircraftMotionListener {
 

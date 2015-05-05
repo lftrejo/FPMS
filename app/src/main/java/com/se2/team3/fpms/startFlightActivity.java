@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+// Class to display the activity for starting the selected flight plan
 public class startFlightActivity extends ActionBarActivity {
 
     @Override

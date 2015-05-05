@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+// Class to display and edit the details of an aircraft object
 public class aircraftDetails extends ActionBarActivity {
 
     @Override

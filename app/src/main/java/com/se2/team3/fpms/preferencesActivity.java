@@ -16,7 +16,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ListView;
 
-
+// Class to display the preferences activity
 public class preferencesActivity extends ActionBarActivity {
 
     @Override
@@ -24,12 +24,11 @@ public class preferencesActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         CheckBox altCheck = (CheckBox) findViewById(R.id.altitudeCheckbox);
         altCheck.setOnCheckedChangeListener(cl);
         ((CheckBox) findViewById(R.id.checkBox3)).setOnCheckedChangeListener(cl2);
-
     }
+
     private OnCheckedChangeListener cl = new OnCheckedChangeListener(){
         public void onCheckedChanged(CompoundButton b, boolean boo){
                 ((EditText) findViewById(R.id.editText)).setEnabled(boo);

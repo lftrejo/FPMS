@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.se2.team3.fpms.MapsActivity">
+    tools:context="com.se2.team3.fpms.inFlightActivity">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -10,7 +10,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearButtons2"
+        android:id="@+id/linearButtons3"
         android:layout_alignParentEnd="true">
 
 
@@ -18,7 +18,7 @@
             android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:text="Save"
-            android:id="@+id/loadFlight2"
+            android:id="@+id/loadFlight3"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858" />
 
@@ -26,7 +26,7 @@
             android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:text="@string/startFlight"
-            android:id="@+id/startFlight2"
+            android:id="@+id/startFlight3"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858" />
 
@@ -34,25 +34,21 @@
             android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:text="Home"
-            android:id="@+id/newFlight2"
+            android:id="@+id/newFlight3"
             android:textColor="#ffcbcbcb"
             android:background="#ff585858"  />
 
     </LinearLayout>
 
 
-
-
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
-    android:layout_height="wrap_content" android:id="@+id/map2"
-    tools:context="com.se2.team3.fpms.MapsActivity"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_above="@+id/linearButtons2"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true" />
-
-
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/map3"
+        tools:context="com.se2.team3.fpms.inFlightActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_above="@+id/linearButtons3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

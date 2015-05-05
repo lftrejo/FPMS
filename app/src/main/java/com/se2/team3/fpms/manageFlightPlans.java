@@ -11,7 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+// Class to display the flight plans in the knowledge base
+// here the users can select, edit or delete a flight plan
 public class manageFlightPlans extends ActionBarActivity {
 
     @Override

@@ -2,9 +2,8 @@ package com.se2.team3.fpms;
 
 import android.location.Location;
 
-/**
- * Created by Scott on 3/30/2015.
- */
+// Class that will create a new thread that will send events in case
+// the wind changes
 public class WindProvider {
     private WindListener listener;
 

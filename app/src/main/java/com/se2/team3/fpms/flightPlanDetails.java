@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+// Class to display activity in which the user can view the details
+// of a flight plan and edit the flight plan.
 public class flightPlanDetails extends ActionBarActivity {
 
     @Override

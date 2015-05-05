@@ -15,7 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-
+// Class that updates the simulated google glass screens with the generated
+// GPS updates. calculating the time of arrival from the coordinates and speed
 public class GoogleGlassActivity extends ActionBarActivity
     implements AircraftMotionListener {
 
@@ -40,7 +41,6 @@ public class GoogleGlassActivity extends ActionBarActivity
 
         // Enable AircraftMotionEvents
         AircraftMotionManager.getInstance(this).addAircraftMotionUpdates(this);
-        Toast.makeText(this.getBaseContext(), "Created GG onCreate", Toast.LENGTH_SHORT).show();
 
         checkBox = (CheckBox) findViewById(R.id.cbxReceive);
         txtLat = (TextView) findViewById(R.id.txtLat);

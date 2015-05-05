@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+// Class to display the routes saved in the knowledge base. user will be able to
+// select, create and delete routes here
 public class routeActivity extends ActionBarActivity {
 
     @Override

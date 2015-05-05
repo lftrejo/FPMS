@@ -7,9 +7,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by luis on 4/23/2015.
- */
+// Class that handles reading and parsing the airport from a file
+// obtained from an open database of airports online.
 public class Airports {
 
     static InputStream inputStream;
@@ -25,6 +24,7 @@ public class Airports {
         getAirports();
     }
 
+    // create and return the list of airports, if exists, just return the list
     public static ArrayList getAirports(){
         if(initialized)
             return resultList;
@@ -32,6 +32,7 @@ public class Airports {
         return read();
     }
 
+    // read file but only add airports in the United states
     public static ArrayList read(){
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {

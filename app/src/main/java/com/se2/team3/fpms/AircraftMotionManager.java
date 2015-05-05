@@ -7,16 +7,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Scott on 3/30/2015.
- */
-public class AircraftMotionManager
-    implements LocationListener, WindListener
+// Class that manages the motion and wind updates, it creates a new thread that
+// will create events when the GPS location has changed. It will notify the
+// main thread when location changes so that it may be handled accordingly
+// and updated on the map
+public class AircraftMotionManager implements LocationListener, WindListener
 {
     private static AircraftMotionManager gInstance;
     private static Activity gActivity;
-    //private static LocationProvider locProvider;
-    //private static WindProvider windProvider;
     private ArrayList<AircraftMotionListener> listeners = new ArrayList<AircraftMotionListener>();
 
     private Location location; // current location
@@ -114,8 +112,6 @@ public class AircraftMotionManager
 
         // for now just see if this event sys works
         for (AircraftMotionListener listener : listeners) {
-//            Log.i("AMM", "dispatch(location) listener:" + listener.toString());
-            //Toast.makeText(gActivity.getBaseContext(), "Flights are loading", Toast.LENGTH_SHORT);
             gActivity.runOnUiThread(new DispatchedEvent(listener, location, trueAirspeed(), trueCourse()) {
                 public void run() {
                     this.listener.onAircraftMotion(this.location, this.trueAirspeed, this.trueCourse);

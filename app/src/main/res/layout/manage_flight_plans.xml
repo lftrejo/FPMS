@@ -275,11 +275,10 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+        android:layout_height="60dp" >
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Home"
             android:id="@+id/buttonHome"
@@ -287,7 +286,7 @@
             android:textColor="#ffcbcbcb" />
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Edit"
             android:id="@+id/buttonEdit"
@@ -295,7 +294,7 @@
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Delete"
             android:id="@+id/buttonDelete"
@@ -303,7 +302,7 @@
             android:background="#ff585858" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:id="@+id/button10"

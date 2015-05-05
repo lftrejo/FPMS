@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+// Class to be used for displaying the activity where new aircraft can
+// be added to the knowledge base
 public class addAircraftActivity extends ActionBarActivity {
 
     @Override
